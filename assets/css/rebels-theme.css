@@ -1,0 +1,228 @@
+/* Rebels brand theme: plain-CSS port of the club website's globals.css (no Tailwind).
+   Works on top of Bootstrap 5.3 dark mode (<html data-bs-theme="dark">). */
+
+:root {
+  /* Tokens (from @theme in globals.css) */
+  --rb-bg: hsl(160 88% 2%);
+  --rb-card: hsl(160 88% 4%);
+  --rb-secondary: hsl(160 88% 10%);
+  --rb-muted: hsl(160 50% 8%);
+  --rb-muted-fg: hsl(160 20% 63.9%);
+  --rb-border: hsl(160 88% 12%);
+  --rb-primary: hsl(47.9 95.8% 53.1%);
+  --rb-primary-fg: hsl(160 88% 3%);
+  --rb-green: #044229;
+  --rb-gold: #ffcd00;
+  --rb-radius-sm: .25rem;
+  --rb-radius-md: .5rem;
+  --rb-radius-lg: .75rem;
+  --rb-radius-xl: 1rem;
+  --font-heading: "Oswald", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-heritage: "Roboto Slab", Georgia, serif;
+
+  /* Bootstrap bridge */
+  --bs-body-bg: var(--rb-bg);
+  --bs-body-color: #fff;
+  --bs-body-font-family: var(--font-body);
+  --bs-border-color: var(--rb-border);
+  --bs-primary: #ffcd00;
+  --bs-primary-rgb: 255, 205, 0;
+  --bs-link-color: var(--rb-primary);
+  --bs-link-hover-color: #fff;
+}
+
+body.rebels-app {
+  background:
+    radial-gradient(circle at top right, rgba(253, 185, 49, .10), transparent 50%),
+    radial-gradient(circle at bottom left, rgba(16, 185, 129, .10), transparent 50%),
+    var(--rb-bg);
+  background-attachment: fixed;
+  color: #fff;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  padding: 0;
+}
+.rebels-app ::selection { background: rgba(253, 205, 0, .3); }
+
+/* Typography helpers */
+.font-heading { font-family: var(--font-heading); }
+.font-heritage { font-family: var(--font-heritage); }
+.nav-label, .button-label, .section-title, .hero-kicker { text-transform: uppercase; }
+.nav-label {
+  font-family: var(--font-heading); font-size: 11px; letter-spacing: .16em; line-height: 1;
+  font-weight: 600; color: rgba(255, 255, 255, .75); text-decoration: none; transition: color .2s;
+}
+.nav-label:hover, .nav-label.active { color: #fff; }
+.nav-label.active { color: var(--rb-primary); }
+.button-label { font-family: var(--font-heading); font-size: 12px; letter-spacing: .14em; line-height: 1; font-weight: 600; }
+.section-title {
+  font-family: var(--font-heading); letter-spacing: .03em; line-height: .88; font-weight: 700; color: #fff; margin: 0;
+}
+.section-title .accent, .text-gold { color: var(--rb-primary); }
+.hero-kicker { font-family: var(--font-heritage); letter-spacing: .22em; color: var(--rb-primary); font-size: 1rem; }
+.label-xs { display: block; margin-bottom: .25rem; font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: rgba(255, 255, 255, .5); }
+
+/* Surfaces */
+.glass { backdrop-filter: blur(20px); background: rgba(2, 44, 34, .5); border: 1px solid rgba(255, 255, 255, .1); }
+.glass-card { backdrop-filter: blur(40px); background: rgba(2, 44, 34, .55); border: 1px solid rgba(255, 255, 255, .1); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, .5); }
+.gold-gradient { background: linear-gradient(135deg, #FFD700, #FDB931 50%, #917405); color: var(--rb-primary-fg); }
+.spatial-shadow { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, .5), 0 0 40px rgba(16, 185, 129, .05); }
+.gold-glow { box-shadow: 0 0 20px rgba(253, 185, 49, .2); }
+.brand-surface {
+  background: linear-gradient(180deg, rgba(3, 22, 15, .88), rgba(3, 22, 15, .94)),
+              radial-gradient(circle at top, rgba(253, 205, 0, .08), transparent 36%);
+}
+.section-divider { border-bottom: 1px solid var(--rb-green); }
+
+/* Forms (admin-input from globals.css, mapped onto Bootstrap controls) */
+.rebels-app .form-control, .rebels-app .form-select {
+  background-color: #000; border: 1px solid rgba(255, 255, 255, .2); border-radius: var(--rb-radius-lg);
+  color: #fff; font-size: .875rem; padding: .7rem .8rem;
+}
+.rebels-app .form-control:focus, .rebels-app .form-select:focus {
+  border-color: rgba(255, 205, 0, .6); box-shadow: 0 0 0 .2rem rgba(255, 205, 0, .12); background-color: #000; color: #fff;
+}
+.rebels-app .form-select:disabled, .rebels-app .form-control:disabled { opacity: .4; }
+.rebels-app .form-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: rgba(255, 255, 255, .5); margin-bottom: .25rem; }
+
+/* Buttons */
+.rebels-app .btn { font-family: var(--font-heading); text-transform: uppercase; letter-spacing: .14em; font-size: 12px; font-weight: 600; padding: .85rem 1.4rem; border-radius: var(--rb-radius-lg); }
+.rebels-app .btn-gold { background: linear-gradient(135deg, #FFD700, #FDB931 50%, #c99a12); color: var(--rb-primary-fg); border: 0; }
+.rebels-app .btn-gold:hover { filter: brightness(1.08); color: var(--rb-primary-fg); }
+.rebels-app .btn-gold:disabled { opacity: .35; }
+.rebels-app .btn-outline-light { --bs-btn-border-color: rgba(255, 255, 255, .25); --bs-btn-color: rgba(255, 255, 255, .8); }
+
+/* Scrollbar */
+.rebels-app ::-webkit-scrollbar { width: 6px; }
+.rebels-app ::-webkit-scrollbar-track { background: transparent; }
+.rebels-app ::-webkit-scrollbar-thumb { background: rgba(255, 205, 0, .2); border-radius: 999px; }
+.rebels-app ::-webkit-scrollbar-thumb:hover { background: rgba(255, 205, 0, .4); }
+
+/* ---------- Socials app layout ---------- */
+.rebels-app .socials-layout, .rebels-app.socials-layout { background: transparent; padding: 0; }
+.rb-topbar { border-bottom: 1px solid rgba(255, 255, 255, .1); background: rgba(0, 0, 0, .3); backdrop-filter: blur(12px); }
+.rb-brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+.rb-brand img { width: 44px; height: 44px; object-fit: contain; }
+.rb-brand .name { font-family: var(--font-heading); font-size: 1.4rem; letter-spacing: .06em; text-transform: uppercase; color: #fff; line-height: 1; }
+.rb-brand .sub { font-family: var(--font-heading); font-size: 9px; letter-spacing: .32em; text-transform: uppercase; color: var(--rb-primary); }
+.rb-topnav a { padding: .35rem 1rem; }
+
+.rb-shell { max-width: 1400px; margin: 1.5rem auto; border: 1px solid rgba(255, 255, 255, .1); border-radius: var(--rb-radius-xl); overflow: hidden; background: rgba(0, 0, 0, .25); }
+.rb-progress { border-right: 1px solid rgba(255, 255, 255, .08); }
+.rb-steps { list-style: none; padding: 0; margin: 0; counter-reset: step; }
+.rb-steps li { counter-increment: step; display: flex; align-items: center; gap: .75rem; padding: .5rem 0; font-size: .85rem; color: rgba(255, 255, 255, .45); }
+.rb-steps li::before {
+  content: counter(step); width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center;
+  border: 1px solid rgba(255, 255, 255, .25); font-family: var(--font-heading); font-size: 12px; flex: none;
+}
+.rb-steps li.current { color: #fff; font-weight: 600; }
+.rb-steps li.current::before { background: var(--rb-primary); color: var(--rb-primary-fg); border-color: var(--rb-primary); }
+.rb-steps li.done { color: rgba(255, 255, 255, .8); }
+.rb-steps li.done::before { content: "✓"; border-color: var(--rb-primary); color: var(--rb-primary); }
+.rb-summary dt { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 255, 255, .4); font-weight: 600; }
+.rb-summary dd { margin: 0 0 .6rem; font-size: .85rem; }
+
+.rb-preview-area { border-right: 1px solid rgba(255, 255, 255, .08); background: rgba(0, 0, 0, .2); }
+.rb-canvas-wrap { width: 100%; max-width: 560px; border-radius: var(--rb-radius-lg); overflow: hidden; border: 1px solid rgba(255, 205, 0, .25); }
+.rb-canvas-wrap canvas { display: block; width: 100%; height: auto; }
+.rb-segment { display: flex; gap: .5rem; flex-wrap: wrap; }
+.rb-segment button {
+  flex: 1; border: 1px solid rgba(255, 255, 255, .15); background: rgba(255, 255, 255, .05); color: rgba(255, 255, 255, .7);
+  border-radius: var(--rb-radius-lg); padding: .6rem; font-family: var(--font-heading); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; transition: .2s;
+}
+.rb-segment button:hover { border-color: rgba(255, 255, 255, .35); color: #fff; }
+.rb-segment button.active { background: var(--rb-primary); border-color: var(--rb-primary); color: #000; }
+.rb-actions { border-top: 1px solid rgba(255, 255, 255, .1); padding: .75rem 1.5rem; }
+.rb-hint { font-size: .75rem; color: var(--rb-muted-fg); }
+.rb-score input { text-align: center; font-family: var(--font-heading); font-size: 1.5rem; }
+
+@media (max-width: 991.98px) { .rb-progress, .rb-preview-area { border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, .08); } }
+@media (max-width: 575.98px) { .rb-shell { margin: 0; border-radius: 0; border-left: 0; border-right: 0; } .rb-topnav { display: none; } }
+
+/* ---------- Step 2: template cards ---------- */
+.rb-card-pick {
+  display: block; width: 100%; padding: .5rem; text-align: left; cursor: pointer;
+  background: rgba(255, 255, 255, .04); border: 1px solid rgba(255, 255, 255, .12); border-radius: var(--rb-radius-lg); color: #fff; transition: .2s;
+}
+.rb-card-pick:hover { border-color: rgba(255, 205, 0, .5); transform: translateY(-2px); }
+.rb-card-pick.active { border-color: var(--rb-primary); box-shadow: 0 0 20px rgba(253, 185, 49, .2); background: rgba(255, 205, 0, .08); }
+.rb-card-pick canvas { display: block; width: 100%; height: auto; border-radius: var(--rb-radius-md); margin-bottom: .5rem; }
+.rb-card-pick .t { font-family: var(--font-heading); text-transform: uppercase; letter-spacing: .12em; font-size: 12px; font-weight: 600; display: block; }
+.rb-card-pick .n { font-size: 11px; color: var(--rb-muted-fg); }
+.rb-swatch { display: flex; align-items: center; justify-content: center; gap: .5rem; }
+.rb-swatch i { width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .4); display: inline-block; }
+
+/* ---------- Step 3: Media Controls ---------- */
+.rb-media-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; margin-bottom: 1.25rem; }
+.rb-media-card {
+  position: relative; border: 1px solid rgba(255, 255, 255, .14); border-radius: var(--rb-radius-lg);
+  background: rgba(255, 255, 255, .03); padding: .5rem; cursor: pointer; text-align: left; transition: all .2s ease;
+  color: #fff; width: 100%;
+}
+.rb-media-card:hover { border-color: rgba(255, 205, 0, .5); transform: translateY(-2px); }
+.rb-media-card.active { border-color: var(--rb-primary); box-shadow: 0 0 18px rgba(253, 185, 49, .25); background: rgba(255, 205, 0, .08); }
+.rb-media-thumb {
+  width: 100%; height: 90px; border-radius: var(--rb-radius-md); object-fit: cover; display: block;
+  background: #020c08; margin-bottom: .4rem; border: 1px solid rgba(255, 255, 255, .08);
+}
+.rb-media-thumb.thumb-none {
+  display: flex; align-items: center; justify-content: center; font-family: var(--font-heading);
+  letter-spacing: .1em; font-size: 11px; color: var(--rb-primary);
+  background: linear-gradient(135deg, #020c08 0%, #04281b 100%);
+}
+.rb-media-card .title { font-family: var(--font-heading); text-transform: uppercase; letter-spacing: .12em; font-size: 12px; font-weight: 600; display: block; }
+.rb-media-card .sub { font-size: 10px; color: var(--rb-muted-fg); display: block; }
+
+.rb-dropzone {
+  border: 2px dashed rgba(255, 205, 0, .35); border-radius: var(--rb-radius-lg); background: rgba(0, 0, 0, .3);
+  padding: 1.25rem 1rem; text-align: center; cursor: pointer; transition: all .2s ease; margin-bottom: 1.25rem;
+}
+.rb-dropzone:hover, .rb-dropzone.dragover { border-color: var(--rb-primary); background: rgba(255, 205, 0, .06); }
+.rb-dropzone .drop-icon { font-size: 1.75rem; color: var(--rb-primary); line-height: 1; margin-bottom: .35rem; }
+.rb-dropzone .drop-title { font-family: var(--font-heading); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #fff; font-weight: 600; }
+.rb-dropzone .drop-hint { font-size: 11px; color: var(--rb-muted-fg); }
+
+.rb-slider-row { margin-bottom: 1rem; }
+.rb-slider-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: .25rem; }
+.rb-slider-val { font-family: var(--font-heading); font-size: 12px; letter-spacing: .08em; color: var(--rb-primary); }
+
+.rebels-app input[type=range] {
+  -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 999px;
+  background: rgba(255, 255, 255, .15); outline: none; transition: background .2s;
+}
+.rebels-app input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--rb-primary); cursor: pointer; box-shadow: 0 0 8px rgba(0, 0, 0, .6);
+}
+.rebels-app input[type=range]::-moz-range-thumb {
+  width: 18px; height: 18px; border-radius: 50%; background: var(--rb-primary);
+  border: none; cursor: pointer; box-shadow: 0 0 8px rgba(0, 0, 0, .6);
+}
+
+/* ---------- Step 4: Caption & Export ---------- */
+.rb-caption-box {
+  background: rgba(0, 0, 0, .45); border: 1px solid rgba(255, 255, 255, .18); border-radius: var(--rb-radius-lg);
+  padding: .85rem; font-family: var(--font-body); font-size: .85rem; line-height: 1.5; color: #fff;
+  width: 100%; resize: vertical; min-height: 170px; outline: none; transition: border-color .2s;
+}
+.rb-caption-box:focus { border-color: var(--rb-primary); box-shadow: 0 0 0 .2rem rgba(255, 205, 0, .15); }
+
+.rb-platform-chips { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: .75rem; }
+.rb-chip {
+  padding: .3rem .65rem; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: .08em;
+  text-transform: uppercase; font-family: var(--font-heading); cursor: pointer;
+  background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .15); color: rgba(255, 255, 255, .7);
+  transition: all .2s;
+}
+.rb-chip:hover { border-color: rgba(255, 255, 255, .4); color: #fff; }
+.rb-chip.active { background: var(--rb-primary); border-color: var(--rb-primary); color: #000; }
+
+.rb-export-banner {
+  border-radius: var(--rb-radius-lg); padding: 1rem; margin-bottom: 1.25rem;
+  background: linear-gradient(135deg, rgba(4, 66, 41, .4) 0%, rgba(2, 44, 34, .7) 100%);
+  border: 1px solid rgba(255, 205, 0, .25);
+}
+.rb-copy-feedback { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #10b981; font-weight: 600; display: none; }
+.rb-copy-feedback.show { display: inline-block; animation: fadeIn .2s; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-2px); } to { opacity: 1; transform: translateY(0); } }

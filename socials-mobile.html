@@ -1,0 +1,68 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mobile layout mockup | Fremantle Rebels</title>
+  <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/socials-mobile.css">
+</head>
+<body class="bg-light">
+  <main class="mobile-mockup-page p-3">
+    <h1 class="h4 text-center">Mobile layout mockup</h1>
+    <p class="small text-secondary text-center">390 × 844 frame · Step 2 of 4 · Static design controls</p>
+    <p class="text-center small"><a href="socials-design.html">Desktop design layout</a></p>
+    <div class="mobile-frame mx-auto">
+      <header class="mobile-header d-flex align-items-center justify-content-between px-3 border-bottom">
+        <strong>REBELS</strong><span class="small">Results Post</span>
+      </header>
+      <div class="mobile-progress px-3 py-3 border-bottom">
+        <p class="small fw-semibold mb-2">Result · Single Team · Step 2 of 4</p>
+        <div class="d-flex gap-2" aria-label="Step 2 of 4"><span class="step-mark completed"></span><span class="step-mark current"></span><span class="step-mark"></span><span class="step-mark"></span></div>
+      </div>
+      <div class="mobile-scroll p-3" tabindex="0" role="region" aria-label="Scrollable preview and editing card">
+        <section aria-labelledby="preview-heading" class="mb-4">
+          <h2 id="preview-heading" class="h6 mb-2">Square preview</h2>
+          <div class="preview-square d-flex align-items-center justify-content-center text-center p-4">Post preview placeholder</div>
+        </section>
+        <section class="card" aria-labelledby="editing-heading">
+          <div class="card-body">
+            <p class="small text-secondary mb-1">CURRENT EDITING CARD</p>
+            <h2 id="editing-heading" class="h5 mb-3">Choose design</h2>
+            <p class="form-label">Template cards</p>
+            <div class="row g-2 mb-3">
+              <div class="col-6"><div class="template-box selected">Template 1<span class="small d-block">Selected</span></div></div>
+              <div class="col-6"><div class="template-box">Template 2</div></div>
+              <div class="col-6"><div class="template-box">Template 3</div></div>
+              <div class="col-6"><div class="template-box">Template 4</div></div>
+            </div>
+            <label class="form-label" for="format">Square/portrait option</label>
+            <select class="form-select mb-3" id="format" disabled><option>Square</option><option>Portrait</option></select>
+            <label class="form-label" for="team-format">Team-name format</label>
+            <select class="form-select mb-3" id="team-format" disabled><option>Full team name</option></select>
+            <div class="form-check"><input class="form-check-input" type="checkbox" id="sponsor" disabled><label class="form-check-label" for="sponsor">Include sponsor</label></div>
+          </div>
+        </section>
+        <p class="small text-secondary mt-3 mb-0">Layout placeholder controls</p>
+      </div>
+      <footer class="mobile-actions d-flex gap-2 align-items-center justify-content-between px-3 border-top">
+        <button class="btn btn-outline-secondary btn-sm" type="button" disabled>Back</button>
+        <a class="btn btn-outline-primary btn-sm" href="#preview-sheet">Preview</a>
+        <button class="btn btn-primary btn-sm" type="button" disabled>Next</button>
+      </footer>
+      <section id="preview-sheet" class="preview-sheet" aria-labelledby="sheet-heading">
+        <a class="sheet-backdrop" href="#" aria-label="Close preview"></a>
+        <div class="sheet-panel p-3">
+          <div class="sheet-handle mx-auto mb-3" aria-hidden="true"></div>
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <h2 id="sheet-heading" class="h5 mb-0">Preview</h2><a class="btn btn-outline-secondary btn-sm" href="#">Close</a>
+          </div>
+          <div class="preview-square d-flex align-items-center justify-content-center text-center p-4">Post preview placeholder</div>
+          <p class="small text-secondary mt-3 mb-0">Square · Template 1</p>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

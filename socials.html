@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Choose fixture or result | Fremantle Rebels Social Generator</title>
+  <meta name="description" content="Create consistent Fremantle Rebels fixture and result posts as images.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=Roboto+Slab:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/rebels-theme.css">
+</head>
+<body class="rebels-app">
+  <a class="visually-hidden-focusable position-absolute p-3 bg-white text-dark" href="#main">Skip to content</a>
+
+  <header class="rb-topbar">
+    <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap gap-2 py-3 px-4">
+      <a class="rb-brand" href="index.html" aria-label="Fremantle Rebels home">
+        <img src="assets/images/rebels-logo.png" alt="">
+        <span><span class="name d-block">Fremantle</span><span class="sub">Social Generator</span></span>
+      </a>
+      <nav class="rb-topnav d-flex gap-2 flex-wrap" aria-label="Generator sections">
+        <a class="nav-label active" href="socials.html" aria-current="page">Fixture / Result</a>
+        <a class="nav-label" href="socials-design.html">Design</a>
+        <a class="nav-label" href="socials-media.html">Media</a>
+        <a class="nav-label" href="socials-export.html">Export</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="rb-shell container-fluid px-0">
+    <main id="main">
+      <div class="row g-0">
+
+        <aside class="col-12 col-lg-2 rb-progress p-4" aria-labelledby="progress-heading">
+          <h2 id="progress-heading" class="section-title fs-5 mb-4">Progress</h2>
+          <ol class="rb-steps mb-4">
+            <li class="current">Choose fixture</li>
+            <li>Choose design</li>
+            <li>Choose media</li>
+            <li>Caption &amp; export</li>
+          </ol>
+          <h3 class="label-xs">Selections</h3>
+          <dl class="rb-summary mb-0" id="summary"><dd class="text-secondary">No selections yet</dd></dl>
+        </aside>
+
+        <section class="col-12 col-md-7 col-lg-6 rb-preview-area p-4 d-flex flex-column align-items-center justify-content-center gap-3" aria-labelledby="preview-heading">
+          <h2 id="preview-heading" class="visually-hidden">Post preview</h2>
+          <div class="rb-canvas-wrap spatial-shadow">
+            <canvas id="postCanvas" width="1080" height="1080" role="img" aria-label="Preview of the social media post"></canvas>
+          </div>
+          <p class="rb-hint mb-0">1080 × 1080 square post · updates live</p>
+          <button type="button" id="download" class="btn btn-outline-light btn-sm" disabled>Download PNG</button>
+        </section>
+
+        <section class="col-12 col-md-5 col-lg-4 p-4" aria-labelledby="editing-heading">
+          <p class="hero-kicker mb-2">Step 1 of 4</p>
+          <h2 id="editing-heading" class="section-title fs-2 mb-4">Create <span class="accent" id="step1Accent">Fixture</span></h2>
+
+          <div class="rb-segment mb-4" role="group" aria-label="Post type">
+            <button type="button" id="typeFixture" class="active" aria-pressed="true">Fixture</button>
+            <button type="button" id="typeResult" aria-pressed="false">Result</button>
+            <button type="button" id="typeInfo" aria-pressed="false">Info Post</button>
+            <button type="button" id="typeDinner" aria-pressed="false">Dinner Order</button>
+          </div>
+
+          <!-- Fixture & Result Controls -->
+          <div id="matchControls">
+            <label class="form-label" for="category">Competition</label>
+            <select class="form-select mb-3" id="category"></select>
+
+            <label class="form-label" for="grade">Grade</label>
+            <select class="form-select mb-3" id="grade"></select>
+
+            <label class="form-label" for="team">Team</label>
+            <select class="form-select mb-3" id="team"></select>
+
+            <label class="form-label" for="round">Round</label>
+            <select class="form-select mb-3" id="round"></select>
+
+            <label class="form-label" for="fixture">Fixture</label>
+            <select class="form-select mb-3" id="fixture"></select>
+
+            <div id="scoreBox" class="rb-score mb-3" hidden>
+              <span class="label-xs">Final score</span>
+              <div class="row g-2 align-items-center">
+                <div class="col"><label class="visually-hidden" for="homeScore">Home score</label><input class="form-control" id="homeScore" type="number" min="0" max="99" inputmode="numeric" placeholder="–"></div>
+                <div class="col-auto text-secondary">–</div>
+                <div class="col"><label class="visually-hidden" for="awayScore">Away score</label><input class="form-control" id="awayScore" type="number" min="0" max="99" inputmode="numeric" placeholder="–"></div>
+              </div>
+              <p class="rb-hint mt-2 mb-0"><span id="homeLabel">Home</span> – <span id="awayLabel">Away</span></p>
+            </div>
+
+            <button type="button" id="nextGame" class="btn btn-outline-light btn-sm w-100">Jump to next game</button>
+            <p class="rb-hint mt-3 mb-0">Fixtures come from the 2026 SEMSA and State League PDFs.</p>
+          </div>
+
+          <!-- Info Post Controls -->
+          <div id="infoControls" hidden>
+            <label class="form-label" for="infoTag">Category / Tag</label>
+            <input class="form-control mb-3" id="infoTag" type="text" placeholder="e.g. CLUB NOTICE, TRAINING UPDATE">
+
+            <label class="form-label" for="infoTitle">Headline</label>
+            <input class="form-control mb-3" id="infoTitle" type="text" placeholder="e.g. SEASON OPENING TRAINING">
+
+            <label class="form-label" for="infoSubtitle">Sub-heading</label>
+            <input class="form-control mb-3" id="infoSubtitle" type="text" placeholder="e.g. ALL GRADES · SENIORS & JUNIORS">
+
+            <label class="form-label">Key Details / Bullet Points</label>
+            <input class="form-control mb-2" id="infoLine1" type="text" placeholder="Detail 1 (e.g. Tuesday & Thursday from 5:30 PM)">
+            <input class="form-control mb-2" id="infoLine2" type="text" placeholder="Detail 2 (e.g. Shirley Strickland Reserve, Ardross)">
+            <input class="form-control mb-2" id="infoLine3" type="text" placeholder="Detail 3 (e.g. Bring cleats, glove & water bottle)">
+            <input class="form-control mb-3" id="infoLine4" type="text" placeholder="Detail 4 (e.g. New & returning players welcome!)">
+
+            <label class="form-label" for="infoFooter">Footer / Website</label>
+            <input class="form-control mb-3" id="infoFooter" type="text" placeholder="e.g. FREMANTLEREBELS.COM.AU">
+
+            <div class="d-flex gap-2 mb-2">
+              <button type="button" class="btn btn-outline-light btn-sm flex-fill" id="btnPresetTraining">Training</button>
+              <button type="button" class="btn btn-outline-light btn-sm flex-fill" id="btnPresetNotice">Notice</button>
+              <button type="button" class="btn btn-outline-light btn-sm flex-fill" id="btnPresetRain">Wet Weather</button>
+            </div>
+          </div>
+
+          <!-- Dinner Order Controls -->
+          <div id="dinnerControls" hidden>
+            <label class="form-label" for="dinnerTag">Header Tag</label>
+            <input class="form-control mb-3" id="dinnerTag" type="text" placeholder="e.g. CLUB DINNER ORDER">
+
+            <label class="form-label" for="dinnerTitle">Event / Dinner Title</label>
+            <input class="form-control mb-3" id="dinnerTitle" type="text" placeholder="e.g. THURSDAY NIGHT DINNER">
+
+            <label class="form-label" for="dinnerSubtitle">Subtitle / Venue</label>
+            <input class="form-control mb-3" id="dinnerSubtitle" type="text" placeholder="e.g. POST-TRAINING MEALS AT SHIRLEY STRICKLAND">
+
+            <label class="form-label">Menu Options & Prices</label>
+            <input class="form-control mb-2" id="dinnerItem1" type="text" placeholder="Option 1 (e.g. Chicken Parmigiana & Chips · $18)">
+            <input class="form-control mb-2" id="dinnerItem2" type="text" placeholder="Option 2 (e.g. Beef Lasagne & Salad · $16)">
+            <input class="form-control mb-3" id="dinnerItem3" type="text" placeholder="Option 3 (e.g. Vegetarian Pasta Bake · $15)">
+
+            <label class="form-label" for="dinnerDeadline">Orders Close / Deadline</label>
+            <input class="form-control mb-3" id="dinnerDeadline" type="text" placeholder="e.g. Wednesday 5:00 PM">
+
+            <label class="form-label" for="dinnerOrderInfo">Order Instructions</label>
+            <input class="form-control mb-3" id="dinnerOrderInfo" type="text" placeholder="e.g. Order via Team App or SMS 0412 345 678">
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="rb-actions">
+      <div class="row g-0 align-items-center w-100">
+        <div class="col-4"><button class="btn btn-outline-light" type="button" disabled>Back</button></div>
+        <div class="col-4 text-center"><button class="btn btn-outline-light" type="button" id="saveDraft">Save draft</button></div>
+        <div class="col-4 text-end"><button class="btn btn-gold" type="button" id="next">Next: design</button></div>
+      </div>
+      <p id="status" class="rb-hint text-center mt-2 mb-0" role="status"></p>
+    </footer>
+  </div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/post-renderer.js"></script>
+  <script src="assets/js/socials.js"></script>
+</body>
+</html>

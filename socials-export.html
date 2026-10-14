@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Caption and export | Fremantle Rebels Social Generator</title>
+  <meta name="description" content="Generate ready-to-share captions and download high-resolution graphics for Instagram, Facebook and Team App.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=Roboto+Slab:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/rebels-theme.css">
+</head>
+<body class="rebels-app">
+  <a class="visually-hidden-focusable position-absolute p-3 bg-white text-dark" href="#main">Skip to content</a>
+
+  <header class="rb-topbar">
+    <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap gap-2 py-3 px-4">
+      <a class="rb-brand" href="index.html" aria-label="Fremantle Rebels home">
+        <img src="assets/images/rebels-logo.png" alt="">
+        <span><span class="name d-block">Fremantle</span><span class="sub">Social Generator</span></span>
+      </a>
+      <nav class="rb-topnav d-flex gap-2 flex-wrap" aria-label="Generator sections">
+        <a class="nav-label" href="socials.html">Fixture / Result</a>
+        <a class="nav-label" href="socials-design.html">Design</a>
+        <a class="nav-label" href="socials-media.html">Media</a>
+        <a class="nav-label active" href="socials-export.html" aria-current="page">Export</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="rb-shell container-fluid px-0">
+    <main id="main">
+      <div class="row g-0">
+
+        <aside class="col-12 col-lg-2 rb-progress p-4" aria-labelledby="progress-heading">
+          <h2 id="progress-heading" class="section-title fs-5 mb-4">Progress</h2>
+          <ol class="rb-steps mb-4">
+            <li class="done">Choose fixture</li>
+            <li class="done">Choose design</li>
+            <li class="done">Choose media</li>
+            <li class="current">Caption &amp; export</li>
+          </ol>
+          <h3 class="label-xs">Selections</h3>
+          <dl class="rb-summary mb-3" id="summary"></dl>
+          <hr class="border-secondary my-3 opacity-25">
+          <a class="text-secondary small text-decoration-none d-block mb-1" href="socials.html">↺ Start new post</a>
+        </aside>
+
+        <section class="col-12 col-md-7 col-lg-6 rb-preview-area p-4 d-flex flex-column align-items-center justify-content-center gap-3" aria-labelledby="preview-heading">
+          <h2 id="preview-heading" class="visually-hidden">Post preview</h2>
+          <div class="rb-canvas-wrap spatial-shadow">
+            <canvas id="postCanvas" width="1080" height="1080" role="img" aria-label="Final preview of the social media post"></canvas>
+          </div>
+          
+          <div class="d-flex align-items-center justify-content-between w-100 max-w-560 px-1" style="max-width: 560px;">
+            <p class="rb-hint mb-0" id="sizeHint">1080 × 1080 · High Resolution PNG</p>
+            <div class="rb-segment" id="quickFormat" role="radiogroup" aria-label="Quick format switch" style="max-width: 220px;">
+              <button type="button" data-v="square" class="active">1:1 Square</button>
+              <button type="button" data-v="portrait">4:5 Portrait</button>
+            </div>
+          </div>
+
+          <div class="w-100 text-center" style="max-width: 560px;">
+            <button type="button" class="btn btn-gold w-100 py-3 d-flex align-items-center justify-content-center gap-2" id="downloadBtn">
+              <span style="font-size: 1.15rem;">⬇</span>
+              <span id="downloadBtnText">Download High-Res PNG</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="col-12 col-md-5 col-lg-4 p-4" aria-labelledby="editing-heading">
+          <p class="hero-kicker mb-2">Step 4 of 4</p>
+          <h2 id="editing-heading" class="section-title fs-2 mb-4">Caption &amp; <span class="accent">export</span></h2>
+
+          <span class="label-xs">Social Platform Style</span>
+          <div class="rb-platform-chips" id="platformChips" role="radiogroup" aria-label="Caption platform presets">
+            <button type="button" class="rb-chip active" data-style="social">Instagram &amp; Facebook</button>
+            <button type="button" class="rb-chip" data-style="chat">Team App / Chat</button>
+            <button type="button" class="rb-chip" data-style="short">Short Result</button>
+          </div>
+
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <label class="form-label mb-0" for="captionBox">Generated Caption</label>
+            <div class="d-flex align-items-center gap-2">
+              <span class="rb-copy-feedback" id="copyNotice">✓ Copied to clipboard!</span>
+              <button type="button" class="btn btn-link text-gold text-decoration-none p-0" id="btnToggleTags" style="font-size: 11px;">Hashtags: ON</button>
+            </div>
+          </div>
+
+          <textarea class="rb-caption-box mb-3" id="captionBox" rows="8" placeholder="Post caption will appear here..."></textarea>
+
+          <div class="d-grid gap-2 mb-4">
+            <button class="btn btn-outline-light d-flex align-items-center justify-content-center gap-2" type="button" id="copyCaptionBtn">
+              <span>📋</span> Copy Caption to Clipboard
+            </button>
+            <button class="btn btn-outline-secondary btn-sm" type="button" id="copyShortBtn">
+              Copy Quick Summary Only
+            </button>
+          </div>
+
+          <div class="rb-export-banner">
+            <h3 class="label-xs text-gold mb-1">Club Publishing Checklist</h3>
+            <ul class="small ps-3 mb-0 text-secondary" style="font-size: 12px; line-height: 1.6;">
+              <li>Tag opponent team &amp; venue if tagged on Instagram/FB.</li>
+              <li>Include Diamond number so supporters head to the right pitch.</li>
+              <li>Post fixtures on Thursday/Friday and results Saturday night!</li>
+            </ul>
+          </div>
+
+        </section>
+      </div>
+    </main>
+
+    <footer class="rb-actions">
+      <div class="row g-0 align-items-center w-100">
+        <div class="col-4"><a class="btn btn-outline-light" href="socials-media.html" id="back">Back: Media</a></div>
+        <div class="col-4 text-center"><button class="btn btn-outline-light" type="button" id="saveDraft">Save draft</button></div>
+        <div class="col-4 text-end"><a class="btn btn-gold" href="socials.html">New Post</a></div>
+      </div>
+      <p id="status" class="rb-hint text-center mt-2 mb-0" role="status"></p>
+    </footer>
+  </div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/post-renderer.js"></script>
+  <script src="assets/js/socials-export.js"></script>
+</body>
+</html>
