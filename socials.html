@@ -65,6 +65,8 @@
             <button type="button" id="typeDinner" aria-pressed="false">Dinner Order</button>
           </div>
 
+          <a class="btn btn-outline-light w-100 mb-4" href="player-cards.html">Player Cards &rarr;</a>
+
           <!-- Fixture & Result Controls -->
           <div id="matchControls">
             <label class="form-label" for="category">Competition</label>
@@ -107,11 +109,11 @@
             <label class="form-label" for="infoSubtitle">Sub-heading</label>
             <input class="form-control mb-3" id="infoSubtitle" type="text" placeholder="e.g. ALL GRADES · SENIORS & JUNIORS">
 
-            <label class="form-label">Key Details / Bullet Points</label>
-            <input class="form-control mb-2" id="infoLine1" type="text" placeholder="Detail 1 (e.g. Tuesday & Thursday from 5:30 PM)">
-            <input class="form-control mb-2" id="infoLine2" type="text" placeholder="Detail 2 (e.g. Shirley Strickland Reserve, Ardross)">
-            <input class="form-control mb-2" id="infoLine3" type="text" placeholder="Detail 3 (e.g. Bring cleats, glove & water bottle)">
-            <input class="form-control mb-3" id="infoLine4" type="text" placeholder="Detail 4 (e.g. New & returning players welcome!)">
+            <label class="form-label" id="infoDetailsLabel">Key Details / Bullet Points</label>
+            <input class="form-control mb-2" id="infoLine1" type="text" aria-labelledby="infoDetailsLabel" aria-label="Key detail line 1" placeholder="Detail 1 (e.g. Tuesday & Thursday from 5:30 PM)">
+            <input class="form-control mb-2" id="infoLine2" type="text" aria-labelledby="infoDetailsLabel" aria-label="Key detail line 2" placeholder="Detail 2 (e.g. Shirley Strickland Reserve, Ardross)">
+            <input class="form-control mb-2" id="infoLine3" type="text" aria-labelledby="infoDetailsLabel" aria-label="Key detail line 3" placeholder="Detail 3 (e.g. Bring cleats, glove & water bottle)">
+            <input class="form-control mb-3" id="infoLine4" type="text" aria-labelledby="infoDetailsLabel" aria-label="Key detail line 4" placeholder="Detail 4 (e.g. New & returning players welcome!)">
 
             <label class="form-label" for="infoFooter">Footer / Website</label>
             <input class="form-control mb-3" id="infoFooter" type="text" placeholder="e.g. FREMANTLEREBELS.COM.AU">
@@ -134,10 +136,10 @@
             <label class="form-label" for="dinnerSubtitle">Subtitle / Venue</label>
             <input class="form-control mb-3" id="dinnerSubtitle" type="text" placeholder="e.g. POST-TRAINING MEALS AT SHIRLEY STRICKLAND">
 
-            <label class="form-label">Menu Options & Prices</label>
-            <input class="form-control mb-2" id="dinnerItem1" type="text" placeholder="Option 1 (e.g. Chicken Parmigiana & Chips · $18)">
-            <input class="form-control mb-2" id="dinnerItem2" type="text" placeholder="Option 2 (e.g. Beef Lasagne & Salad · $16)">
-            <input class="form-control mb-3" id="dinnerItem3" type="text" placeholder="Option 3 (e.g. Vegetarian Pasta Bake · $15)">
+            <label class="form-label" id="dinnerMenuLabel">Menu Options & Prices</label>
+            <input class="form-control mb-2" id="dinnerItem1" type="text" aria-labelledby="dinnerMenuLabel" aria-label="Menu option 1" placeholder="Option 1 (e.g. Chicken Parmigiana & Chips · $18)">
+            <input class="form-control mb-2" id="dinnerItem2" type="text" aria-labelledby="dinnerMenuLabel" aria-label="Menu option 2" placeholder="Option 2 (e.g. Beef Lasagne & Salad · $16)">
+            <input class="form-control mb-3" id="dinnerItem3" type="text" aria-labelledby="dinnerMenuLabel" aria-label="Menu option 3" placeholder="Option 3 (e.g. Vegetarian Pasta Bake · $15)">
 
             <label class="form-label" for="dinnerDeadline">Orders Close / Deadline</label>
             <input class="form-control mb-3" id="dinnerDeadline" type="text" placeholder="e.g. Wednesday 5:00 PM">

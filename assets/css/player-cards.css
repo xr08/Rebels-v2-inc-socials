@@ -1,0 +1,8 @@
+.card-workspace { display: grid; grid-template-columns: minmax(0, 1fr) minmax(350px, 1fr); }
+.card-preview { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.card-preview .rb-canvas-wrap { max-width: 390px; border-radius: 3px; }
+.card-controls { min-width: 0; }
+.card-controls input[type="color"] { display: block; width: 72px; height: 36px; margin-top: 6px; border: 1px solid #ffffff44; border-radius: 5px; background: transparent; }
+.card-controls summary { cursor: pointer; color: var(--rb-gold, #ffcd00); padding: 12px 0; }
+.card-controls input[type="range"] { width: 100%; accent-color: #ffcd00; }
+@media (max-width: 767px) { .card-workspace { grid-template-columns: minmax(0, 1fr); } .card-preview .rb-canvas-wrap { max-width: 300px; } }

@@ -1,0 +1,22 @@
+/* Opt-in finishes: combine .rb-special with one finish class. */
+.rb-special {
+  --button-ink: #071b13;
+  --button-edge: #755210;
+  display: inline-flex; align-items: center; justify-content: center; gap: .65rem;
+  min-height: 58px; padding: 1rem 1.65rem; border: 1px solid #ffffff70;
+  border-radius: 14px; font: 600 13px var(--font-heading, sans-serif);
+  letter-spacing: .12em; text-transform: uppercase; text-decoration: none;
+  color: var(--button-ink); cursor: pointer;
+  box-shadow: inset 0 2px 2px #ffffffe0, inset 2px 0 4px #ffffff70, inset -2px 0 4px #ffffff50, inset 0 -3px 5px #00000030, 0 2.9px 0 var(--button-edge), 0 5.8px 0 var(--button-edge), 0 7.2px 0 #00000080, 0 9.4px 5px #00000080, 0 16px 24px #000000a6;
+  transition: transform .18s ease, filter .18s ease, box-shadow .18s ease;
+}
+.rb-metal-gold { background: radial-gradient(ellipse at 50% 0%, #fff8d2b3, transparent 65%), linear-gradient(180deg, #f9e59a, #e9bd49 42%, #dfae31 72%, #efce68); border-color: #edce76 #bc922d #a37619; }
+.rb-smoked-glass { --button-ink: #f4fff9; --button-edge: #061f19; background: radial-gradient(ellipse at 50% 0%, #ffffff35, transparent 75%), linear-gradient(180deg, #24634fc9, #0b382cdd 65%, #174b3ddd); border-color: #ffffff65 #ffffff30 #ffffff26; position: relative; isolation: isolate;  }
+.rb-metal-chrome { --button-ink: #14201c; --button-edge: #5f6d75; background: radial-gradient(ellipse at 50% 0%, #ffffffdb, transparent 65%), linear-gradient(180deg, #f4f7f9, #c6d0d7 42%, #acbbc4 72%, #e2e9ed); border-color: #fff #a8b4bc #788991; }
+.rb-special:is(:hover, .is-hover):not(:disabled) { color: var(--button-ink); transform: translateY(-2px); filter: brightness(1.1); }
+.rb-special:is(:active, .is-pressed):not(:disabled) { transform: translateY(5px); filter: brightness(.97); box-shadow: inset 0 1px 2px #ffffff70, inset 0 -2px 4px #00000035, 0 2px 0 var(--button-edge), 0 3px 0 #00000080, 0 6px 8px #00000080; }
+.rb-special:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+.rb-special:disabled { opacity: .4; cursor: not-allowed; box-shadow: none; }
+@media (prefers-reduced-motion: reduce) { .rb-special { transition: none; } .rb-special:is(:hover, :active, .is-hover, .is-pressed):not(:disabled) { transform: none; } }
+
+.rb-smoked-glass::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); pointer-events: none; }

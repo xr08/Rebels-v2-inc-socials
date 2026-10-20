@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Player Cards | Fremantle Rebels Social Generator</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=Roboto+Slab:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/rebels-theme.css">
+  <link rel="stylesheet" href="assets/css/player-cards.css">
+</head>
+<body class="rebels-app">
+  <a class="visually-hidden-focusable" href="#main">Skip to content</a>
+  <header class="rb-topbar"><div class="container-fluid d-flex align-items-center justify-content-between flex-wrap gap-3 py-3 px-4">
+    <a class="rb-brand" href="index.html"><img src="assets/images/rebels-logo.png" alt="Rebels"><span><span class="name d-block">Fremantle</span><span class="sub">Social Generator</span></span></a>
+    <a class="btn btn-outline-light btn-sm" href="socials.html">Back to social posts</a>
+  </div></header>
+  <main id="main" class="rb-shell card-workspace">
+    <section class="card-preview rb-preview-area p-4" aria-label="Live player card preview">
+      <p class="hero-kicker">THE CLUB COLLECTION</p>
+      <div class="rb-canvas-wrap spatial-shadow"><canvas id="cardCanvas" width="750" height="1050" role="img" aria-label="Player card front preview"></canvas></div>
+      <div class="rb-segment mt-3" role="group" aria-label="Preview side"><button type="button" data-side="front" aria-pressed="true" class="active">Front</button><button type="button" data-side="back" aria-pressed="false">Back</button></div>
+      <p class="rb-hint mt-3">750 × 1050 px · 5:7 trading card · live preview</p>
+      <p class="rb-hint">For a 2.5 × 3.5 inch print, set 300 DPI. Export has no bleed.</p>
+    </section>
+    <section class="p-4 card-controls" aria-labelledby="cardTitle">
+      <p class="hero-kicker">PLAYER CARD PRESETS</p><h1 id="cardTitle" class="section-title fs-2">Make it <span class="accent">collectible.</span></h1>
+      <p class="rb-hint">Pick a design, add your player and upload a photo.</p>
+      <form id="cardForm">
+        <label class="form-label" for="design">Design</label><select id="design" class="form-select mb-3"><option value="vintage">Vintage Pennant — cream frame &amp; name ribbon</option><option value="stadium">Stadium Stripe — bold frame &amp; diagonal stripes</option></select>
+        <label class="form-label" for="palette">Colour palette</label><select id="palette" class="form-select mb-3"><option value="rebels">Rebels green &amp; gold</option><option value="navy">Navy &amp; red</option><option value="teal">Teal &amp; coral</option><option value="purple">Purple &amp; gold</option><option value="custom">Custom colours</option></select>
+        <div class="d-flex gap-4 mb-3"><label>Team colour <input id="primary" type="color" value="#044229"></label><label>Accent <input id="accent" type="color" value="#ffcd00"></label></div>
+        <div class="row g-3 mb-3" id="playerFields"></div>
+        <label class="form-label" for="photo">Player photo</label><input id="photo" class="form-control mb-2" type="file" accept="image/*"><p class="rb-hint">Use a portrait or action photo. Images stay in this browser.</p>
+        <button type="button" id="removePhoto" class="btn btn-outline-light btn-sm mb-3">Remove photo</button>
+        <div id="cropControls"></div>
+        <details class="mb-3"><summary>Matching back · stats &amp; player story</summary><div id="backFields" class="mt-3"></div></details>
+        <div class="d-flex flex-wrap gap-2"><button id="saveCard" type="button" class="btn btn-outline-light">Save draft</button><button id="downloadFront" type="button" class="btn btn-gold">Download front</button><button id="downloadBack" type="button" class="btn btn-outline-light">Download back</button></div>
+        <p id="cardStatus" class="rb-hint mt-3" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+  <script src="assets/js/player-cards.js"></script>
+</body></html>

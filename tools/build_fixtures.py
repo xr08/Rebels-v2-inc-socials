@@ -1,8 +1,10 @@
-"""Convert the fixture PDFs in the project root into assets/js/data.js.
+"""Convert the fixture PDFs in tools/fixtures/ into assets/js/data.js.
 Run from the project root:  python tools/build_fixtures.py   (needs: pip install pypdf)
 """
 import glob, json, re, datetime, os
 import pypdf
+
+FIXTURES_DIR = os.path.join(os.path.dirname(__file__), "fixtures")
 
 SOURCES = {
     "A Grade 2026 semsa.pdf":  ("SEMSA Summer", "A Grade"),
@@ -20,8 +22,9 @@ CLUB = re.compile(r"Rebels|Mariners")
 
 fixtures, teams = [], {}
 for pdf, (category, grade) in SOURCES.items():
+    pdf_path = os.path.join(FIXTURES_DIR, pdf)
     lines = []
-    for page in pypdf.PdfReader(pdf).pages:
+    for page in pypdf.PdfReader(pdf_path).pages:
         lines += [l.strip() for l in page.extract_text().splitlines() if l.strip()]
     lines = [l for l in lines if not NOISE.match(l)]
     rnd, venue, i = None, "", 0

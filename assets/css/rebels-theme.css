@@ -13,6 +13,11 @@
   --rb-primary-fg: hsl(160 88% 3%);
   --rb-green: #044229;
   --rb-gold: #ffcd00;
+  --rb-gold-light: #ffd630;
+  --shadow-s: 0 2px 4px rgba(0, 0, 0, .35);
+  --shadow-m: 0 6px 14px rgba(0, 0, 0, .4);
+  --shadow-l: 0 12px 24px rgba(0, 0, 0, .45);
+  --transition: .2s ease;
   --rb-radius-sm: .25rem;
   --rb-radius-md: .5rem;
   --rb-radius-lg: .75rem;
@@ -55,6 +60,18 @@ body.rebels-app {
 }
 .nav-label:hover, .nav-label.active { color: #fff; }
 .nav-label.active { color: var(--rb-primary); }
+/* Animated underline for header and footer links */
+.rb-topbar .nav-label, .site-footer .nav-label { position: relative; }
+.rb-topbar .nav-label::before, .site-footer .nav-label::before {
+  content: ""; position: absolute; left: 0; bottom: -.4rem; width: 0; opacity: 0;
+  border-bottom: 2px solid var(--rb-primary); transition: width .5s ease, opacity .5s ease; pointer-events: none;
+}
+.rb-topbar .nav-label:hover::before, .rb-topbar .nav-label:focus-visible::before, .rb-topbar .nav-label.active::before,
+.site-footer .nav-label:hover::before, .site-footer .nav-label:focus-visible::before { width: 100%; opacity: 1; }
+/* Footer links use the animated underline from above */
+@media (prefers-reduced-motion: reduce) {
+  .rb-topbar .nav-label::before, .site-footer .nav-label::before { transition: none; }
+}
 .button-label { font-family: var(--font-heading); font-size: 12px; letter-spacing: .14em; line-height: 1; font-weight: 600; }
 .section-title {
   font-family: var(--font-heading); letter-spacing: .03em; line-height: .88; font-weight: 700; color: #fff; margin: 0;
@@ -89,9 +106,26 @@ body.rebels-app {
 /* Buttons */
 .rebels-app .btn { font-family: var(--font-heading); text-transform: uppercase; letter-spacing: .14em; font-size: 12px; font-weight: 600; padding: .85rem 1.4rem; border-radius: var(--rb-radius-lg); }
 .rebels-app .btn-gold { background: linear-gradient(135deg, #FFD700, #FDB931 50%, #c99a12); color: var(--rb-primary-fg); border: 0; }
+.rebels-app .hero .btn-gold { border: 2px solid #fff; }
 .rebels-app .btn-gold:hover { filter: brightness(1.08); color: var(--rb-primary-fg); }
 .rebels-app .btn-gold:disabled { opacity: .35; }
 .rebels-app .btn-outline-light { --bs-btn-border-color: rgba(255, 255, 255, .25); --bs-btn-color: rgba(255, 255, 255, .8); }
+
+/* Rotating "pointer" border: add .border-spin plus a colour class (.border-spin-green / -yellow / -white) */
+@property --spin-angle { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.border-spin { position: relative; --spin-color: var(--rb-green); --spin-width: 2px; --spin-speed: 5s; }
+.border-spin::after {
+  content: ""; position: absolute; inset: -2px; padding: var(--spin-width); border-radius: inherit; pointer-events: none;
+  background: conic-gradient(from var(--spin-angle), transparent 0 55%, var(--spin-color) 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: border-spin var(--spin-speed) linear infinite;
+}
+.border-spin-green { --spin-color: var(--rb-green); }
+.border-spin-yellow { --spin-color: var(--rb-gold); }
+.border-spin-white { --spin-color: #fff; }
+@keyframes border-spin { to { --spin-angle: 360deg; } }
+@media (prefers-reduced-motion: reduce) { .border-spin::after { animation: none; } }
 
 /* Scrollbar */
 .rebels-app ::-webkit-scrollbar { width: 6px; }
@@ -102,6 +136,7 @@ body.rebels-app {
 /* ---------- Socials app layout ---------- */
 .rebels-app .socials-layout, .rebels-app.socials-layout { background: transparent; padding: 0; }
 .rb-topbar { border-bottom: 1px solid rgba(255, 255, 255, .1); background: rgba(0, 0, 0, .3); backdrop-filter: blur(12px); }
+.rb-topbar nav { column-gap: 2rem !important; }
 .rb-brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
 .rb-brand img { width: 44px; height: 44px; object-fit: contain; }
 .rb-brand .name { font-family: var(--font-heading); font-size: 1.4rem; letter-spacing: .06em; text-transform: uppercase; color: #fff; line-height: 1; }
