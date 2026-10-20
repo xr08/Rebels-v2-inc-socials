@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=Roboto+Slab:wght@400;500;700&display=swap">
   <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/rebels-theme.css">
+  <link rel="stylesheet" href="assets/css/special-buttons.css">
 </head>
 <body class="rebels-app">
   <a class="visually-hidden-focusable position-absolute p-3 bg-white text-dark" href="#main">Skip to content</a>
@@ -51,7 +52,7 @@
             <canvas id="postCanvas" width="1080" height="1080" role="img" aria-label="Preview of the social media post"></canvas>
           </div>
           <p class="rb-hint mb-0">1080 × 1080 square post · updates live</p>
-          <button type="button" id="download" class="btn btn-outline-light btn-sm" disabled>Download PNG</button>
+          <button type="button" id="download" class="rb-special rb-smoked-glass rb-special-sm" disabled>Download PNG</button>
         </section>
 
         <section class="col-12 col-md-5 col-lg-4 p-4" aria-labelledby="editing-heading">
@@ -65,7 +66,7 @@
             <button type="button" id="typeDinner" aria-pressed="false">Dinner Order</button>
           </div>
 
-          <a class="btn btn-outline-light w-100 mb-4" href="player-cards.html">Player Cards &rarr;</a>
+          <a class="w-100 mb-4 rb-special rb-smoked-glass" href="player-cards.html">Player Cards &rarr;</a>
 
           <!-- Fixture & Result Controls -->
           <div id="matchControls">
@@ -94,7 +95,7 @@
               <p class="rb-hint mt-2 mb-0"><span id="homeLabel">Home</span> – <span id="awayLabel">Away</span></p>
             </div>
 
-            <button type="button" id="nextGame" class="btn btn-outline-light btn-sm w-100">Jump to next game</button>
+            <button type="button" id="nextGame" class="w-100 rb-special rb-smoked-glass rb-special-sm">Jump to next game</button>
             <p class="rb-hint mt-3 mb-0">Fixtures come from the 2026 SEMSA and State League PDFs.</p>
           </div>
 
@@ -119,9 +120,9 @@
             <input class="form-control mb-3" id="infoFooter" type="text" placeholder="e.g. FREMANTLEREBELS.COM.AU">
 
             <div class="d-flex gap-2 mb-2">
-              <button type="button" class="btn btn-outline-light btn-sm flex-fill" id="btnPresetTraining">Training</button>
-              <button type="button" class="btn btn-outline-light btn-sm flex-fill" id="btnPresetNotice">Notice</button>
-              <button type="button" class="btn btn-outline-light btn-sm flex-fill" id="btnPresetRain">Wet Weather</button>
+              <button type="button" class="flex-fill rb-special rb-smoked-glass rb-special-sm" id="btnPresetTraining">Training</button>
+              <button type="button" class="flex-fill rb-special rb-smoked-glass rb-special-sm" id="btnPresetNotice">Notice</button>
+              <button type="button" class="flex-fill rb-special rb-smoked-glass rb-special-sm" id="btnPresetRain">Wet Weather</button>
             </div>
           </div>
 
@@ -153,9 +154,9 @@
 
     <footer class="rb-actions">
       <div class="row g-0 align-items-center w-100">
-        <div class="col-4"><button class="btn btn-outline-light" type="button" disabled>Back</button></div>
-        <div class="col-4 text-center"><button class="btn btn-outline-light" type="button" id="saveDraft">Save draft</button></div>
-        <div class="col-4 text-end"><button class="btn btn-gold" type="button" id="next">Next: design</button></div>
+        <div class="col-4"><button class="rb-special rb-smoked-glass" type="button" disabled>Back</button></div>
+        <div class="col-4 text-center"><button class="rb-special rb-smoked-glass" type="button" id="saveDraft">Save draft</button></div>
+        <div class="col-4 text-end"><button class="rb-special rb-metal-gold" type="button" id="next">Next: design</button></div>
       </div>
       <p id="status" class="rb-hint text-center mt-2 mb-0" role="status"></p>
     </footer>
@@ -164,5 +165,6 @@
   <script src="assets/js/data.js"></script>
   <script src="assets/js/post-renderer.js"></script>
   <script src="assets/js/socials.js"></script>
+  <script src="assets/js/button-links.js"></script>
 </body>
 </html>

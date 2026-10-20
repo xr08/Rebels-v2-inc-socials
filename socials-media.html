@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=Roboto+Slab:wght@400;500;700&display=swap">
   <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/rebels-theme.css">
+  <link rel="stylesheet" href="assets/css/special-buttons.css">
 </head>
 <body class="rebels-app">
   <a class="visually-hidden-focusable position-absolute p-3 bg-white text-dark" href="#main">Skip to content</a>
@@ -68,13 +69,13 @@
             <div class="drop-icon">📷</div>
             <div class="drop-title" id="dropTitle">Upload Match Photo</div>
             <div class="drop-hint mt-1" id="dropHint">Drag &amp; drop PNG, JPG or WebP (or click to browse)</div>
-            <button type="button" class="btn btn-outline-light btn-sm mt-2 d-none" id="clearPhoto">Remove Custom Photo</button>
+            <button type="button" class="mt-2 d-none rb-special rb-smoked-glass rb-special-sm" id="clearPhoto">Remove Custom Photo</button>
           </div>
 
           <div id="photoControls">
             <div class="d-flex align-items-center justify-content-between mb-2">
               <span class="label-xs mb-0">Photo Framing &amp; Lighting</span>
-              <button type="button" class="btn btn-link text-secondary text-decoration-none p-0" id="resetFraming" style="font-size: 11px;">Reset</button>
+              <button type="button" class="text-secondary text-decoration-none rb-special rb-smoked-glass rb-special-sm" id="resetFraming" style="font-size: 11px;">Reset</button>
             </div>
 
             <div class="rb-slider-row">
@@ -117,9 +118,9 @@
 
     <footer class="rb-actions">
       <div class="row g-0 align-items-center w-100">
-        <div class="col-4"><a class="btn btn-outline-light" href="socials-design.html" id="back">Back: Design</a></div>
-        <div class="col-4 text-center"><button class="btn btn-outline-light" type="button" id="saveDraft">Save draft</button></div>
-        <div class="col-4 text-end"><button class="btn btn-gold" type="button" id="next">Next: Export</button></div>
+        <div class="col-4"><a class="rb-special rb-smoked-glass" href="socials-design.html" id="back">Back: Design</a></div>
+        <div class="col-4 text-center"><button class="rb-special rb-smoked-glass" type="button" id="saveDraft">Save draft</button></div>
+        <div class="col-4 text-end"><button class="rb-special rb-metal-gold" type="button" id="next">Next: Export</button></div>
       </div>
       <p id="status" class="rb-hint text-center mt-2 mb-0" role="status"></p>
     </footer>
@@ -128,5 +129,6 @@
   <script src="assets/js/data.js"></script>
   <script src="assets/js/post-renderer.js"></script>
   <script src="assets/js/socials-media.js"></script>
+  <script src="assets/js/button-links.js"></script>
 </body>
 </html>

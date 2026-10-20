@@ -67,6 +67,26 @@ p {
 .section-space {
   padding: 4.5rem 0;
 }
+/* Photo alternative: pair with .section-space in place of .bg-light. */
+.section-space-jibbets {
+  --section-photo-shade: .89;
+  background-color: #04140d;
+  background-image:
+    linear-gradient(rgba(2, 16, 10, var(--section-photo-shade)), rgba(2, 16, 10, var(--section-photo-shade))),
+    url("../images/jibbets.jpg");
+  background-position: center, center 48%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-top: 1px solid rgba(255, 205, 0, .2);
+  border-bottom: 1px solid rgba(255, 205, 0, .2);
+  color: #fff;
+}
+.section-space-jibbets .card {
+  background-color: rgba(2, 24, 16, .8);
+}
+@media (max-width: 767.98px) {
+  .section-space-jibbets { background-position: center, 52% center; }
+}
 .bg-light,
 .section-space.bg-light {
   background-color: rgba(2, 28, 18, 0.35) !important;
@@ -87,7 +107,7 @@ p {
     box-shadow 0.2s ease;
 }
 .card-enquiry {
-  background: #f5efef;
+  background: #f5efe0;
   backdrop-filter: blur(20px);
   border: 2px solid var(--rb-primary, #ffcd00);
   border-radius: 1rem;
